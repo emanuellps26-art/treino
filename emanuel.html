@@ -1,0 +1,896 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Treino Emanuel Pessoa Sousa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&display=swap">
+<style id="lf-estilo">/* Layout: uma coluna estreita para celular. Faixa preta da marca no topo, semanas em grade de 4, treinos em blocos que abrem. */
+:root {
+  --bg: #f6f3f3;
+  --surface: #ffffff;
+  --ink: #161313;
+  --ink-2: #625a5a;
+  --line: #e2dcdc;
+  --field: #ffffff;
+  --red: #d90429;
+  --on-red: #ffffff;
+  --brand-black: #111111;
+  --on-black: #ffffff;
+  --on-black-2: #b9b2b2;
+  --ok: #17794a;
+  --up: #17794a;
+  --down: #b42318;
+  --ok-bg: #e3f3ea;
+  --warn: #8a5a00;
+  --warn-bg: #fbefd2;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0d0d; --surface: #1b1818; --ink: #f4f0f0; --ink-2: #aaa2a2; --line: #332e2e; --field: #131111;
+    --red: #f0263f; --on-red: #ffffff; --brand-black: #000000; --on-black: #ffffff; --on-black-2: #b9b2b2;
+    --ok: #5fd39a; --up: #5fd39a; --down: #ff7a6b; --ok-bg: #12301f; --warn: #f1c05b; --warn-bg: #33270b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f0d0d; --surface: #1b1818; --ink: #f4f0f0; --ink-2: #aaa2a2; --line: #332e2e; --field: #131111;
+  --red: #f0263f; --on-red: #ffffff; --brand-black: #000000; --on-black: #ffffff; --on-black-2: #b9b2b2;
+  --ok: #5fd39a; --up: #5fd39a; --down: #ff7a6b; --ok-bg: #12301f; --warn: #f1c05b; --warn-bg: #33270b; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; }
+h1, h2, h3, p { margin: 0; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+.brand { background: var(--brand-black); color: var(--on-black); border-bottom: 4px solid var(--red); }
+.brand-in { max-width: 720px; margin: 0 auto; padding: 18px 16px; display: flex; align-items: center; gap: 14px; }
+.mono { font-family: var(--display); font-style: italic; font-weight: 700; font-size: 44px; line-height: 1; letter-spacing: -2px; padding-right: 6px; }
+.mono .f { color: var(--red); }
+.brand-name { font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1.05; letter-spacing: 1.5px; }
+.brand-name b { color: var(--red); font-weight: 700; }
+.brand-sub { font-size: 13px; color: var(--on-black-2); letter-spacing: 0.3px; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 40px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--red); }
+h1 { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.05; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: 0.4px; text-transform: uppercase; }
+.hint { color: var(--ink-2); font-size: 15px; }
+.intro { display: flex; flex-direction: column; gap: 6px; }
+
+.aviso { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 12px 14px; font-weight: 500; }
+
+.weeks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.wk { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 4px; min-height: 58px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.wk i { font-style: normal; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-2); }
+.wk b { font-family: var(--display); font-weight: 700; font-size: 26px; line-height: 1; }
+.wk[aria-pressed="true"] i { color: var(--on-red); }
+.wk span { font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.wk[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.wk[aria-pressed="true"] span { color: var(--on-red); }
+
+.semana { display: flex; flex-direction: column; gap: 12px; }
+.semana-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+.treino { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.treino > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 14px; min-height: 56px; }
+.treino > summary::-webkit-details-marker { display: none; }
+.treino > summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid var(--ink-2); border-bottom: 2px solid var(--ink-2); transform: rotate(45deg); margin-left: 4px; flex: none; }
+.treino[open] > summary::after { transform: rotate(-135deg); }
+.treino[open] > summary { background: var(--brand-black); color: var(--on-black); }
+.treino[open] > summary::after { border-color: var(--on-black); }
+.t-title { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.t-num { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.6px; text-transform: uppercase; line-height: 1.1; }
+.t-foco { font-size: 13px; color: var(--ink-2); }
+.treino[open] .t-foco { color: var(--on-black-2); }
+.pill { flex: none; font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 999px; background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); white-space: nowrap; }
+.pill[data-st="ok"] { background: var(--ok-bg); color: var(--ok); border-color: transparent; }
+.pill[data-st="edit"] { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+.pill[data-st="part"] { background: var(--bg); color: var(--ink); }
+
+.t-body { padding: 4px 14px 16px; display: flex; flex-direction: column; }
+.ex { padding-block: 14px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.ex-head { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.ex-head input { width: 26px; height: 26px; margin: 0; flex: none; accent-color: var(--red); }
+.ex-txt { min-width: 0; display: flex; flex-direction: column; }
+.ex-nome { font-weight: 600; line-height: 1.25; }
+.ex-meta { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.sets { display: flex; flex-direction: column; gap: 8px; padding-left: 38px; }
+.set { display: grid; grid-template-columns: 26px minmax(0, 1fr) 26px 14px minmax(0, 1fr) 34px; align-items: center; gap: 6px; }
+.set.tempo { grid-template-columns: 26px minmax(0, 1fr) 34px; max-width: 220px; }
+.set span { font-size: 14px; color: var(--ink-2); }
+.set .s-l { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--ink); }
+.set .x { text-align: center; }
+.set input, .obs textarea, .evo select { width: 100%; min-height: 44px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 16px; }
+.set input { text-align: center; font-variant-numeric: tabular-nums; }
+.obs { display: flex; flex-direction: column; gap: 6px; padding-top: 14px; font-weight: 600; }
+.obs textarea { min-height: 84px; resize: vertical; font-weight: 400; }
+.conflict { margin-top: 12px; background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 12px; font-size: 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.t-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 14px; }
+.saved { font-size: 13px; color: var(--ink-2); flex: 1; min-width: 150px; }
+.btn { background: var(--red); color: var(--on-red); border: 0; border-radius: 8px; min-height: 48px; padding: 10px 20px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: 0.8px; text-transform: uppercase; cursor: pointer; }
+.btn[disabled] { opacity: 0.55; cursor: default; }
+.btn.zap { background: var(--ink); color: var(--bg); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 17px; flex: 1; min-width: 220px; }
+.enviar { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; align-items: stretch; }
+.enviar .ghost { min-height: 48px; }
+.copia { width: 100%; min-height: 120px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 14px; }
+.nota { font-size: 13px; color: var(--ink-2); border-left: 3px solid var(--red); padding-left: 10px; }
+.btn.ghost { background: transparent; color: inherit; border: 1px solid currentColor; min-height: 40px; font-size: 16px; padding: 6px 14px; }
+
+.painel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 14px; display: flex; flex-direction: column; gap: 12px; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 16px; }
+.opt { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; }
+.opt input { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--red); }
+
+.evo { display: flex; flex-direction: column; gap: 12px; }
+.evo label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+.chart h3 { font-size: 15px; font-weight: 600; }
+.chart { display: flex; flex-direction: column; gap: 10px; }
+.plot { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; }
+.col { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+.col .val { font-size: 12px; font-weight: 600; min-height: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.col .track { width: 100%; height: 130px; display: flex; align-items: flex-end; justify-content: center; border-bottom: 1px solid var(--ink-2); padding-inline: 12%; }
+.col .bar { width: 100%; max-width: 40px; background: var(--red); border-radius: 4px 4px 0 0; min-height: 2px; }
+.chart.neutro .bar { background: var(--ink); }
+.col .lab { font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.axis { font-size: 12px; color: var(--ink-2); text-align: center; }
+.vazio { color: var(--ink-2); font-size: 15px; padding-block: 8px; }
+
+footer { color: var(--ink-2); font-size: 14px; text-align: center; padding-top: 4px; }
+#toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--brand-black); color: var(--on-black); border: 1px solid var(--red); padding: 10px 16px; border-radius: 8px; font-weight: 600; max-width: calc(100% - 32px); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+#toast.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { #toast { transition: none; } }
+@media (max-width: 380px) { .sets { padding-left: 0; } .mono { font-size: 38px; } .brand-name { font-size: 21px; } }
+.dia { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; border-bottom: 1px solid var(--line); font-weight: 600; }
+.dia input { min-height: 44px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: 16px; max-width: 60%; }
+.set.prep .s-l { color: var(--ink-2); }
+
+.resumo { margin-top: 14px; padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); display: flex; flex-direction: column; gap: 10px; }
+.r-tit { font-family: var(--display); font-weight: 700; font-size: 19px; text-transform: uppercase; letter-spacing: 0.5px; }
+.r-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.r-kpis span { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; color: var(--ink-2); display: flex; flex-direction: column; }
+.r-kpis b { font-family: var(--display); font-size: 21px; color: var(--ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.r-kpis i { font-style: normal; font-weight: 600; font-size: 12px; }
+.r-row { display: flex; flex-direction: column; gap: 4px; padding-block: 6px; border-top: 1px solid var(--line); }
+.r-nome { font-weight: 600; font-size: 14px; display: flex; flex-direction: column; }
+.r-nome small { font-weight: 400; font-size: 12px; color: var(--ink-2); }
+.r-nome em { font-style: normal; font-weight: 600; }
+.r-graf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.r-track { position: relative; height: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.r-mid { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 2px; background: var(--ink-2); }
+.r-fill { position: absolute; top: 0; bottom: 0; border-radius: 999px; }
+.r-fill.r-sobe { background: var(--up); }
+.r-fill.r-cai { background: var(--down); }
+.r-chip { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.r-chip.r-sobe { color: var(--up); border-color: var(--up); }
+.r-chip.r-cai { color: var(--down); border-color: var(--down); }
+.m-topo, .m-up { color: var(--up); }
+.m-abaixo, .m-down { color: var(--down); }
+.r-leg { font-size: 12px; color: var(--ink-2); }
+.resumo-sem { gap: 12px; }
+.r-bloco { display: flex; flex-direction: column; gap: 2px; }
+.r-bloco h3 { font-size: 15px; font-weight: 600; padding-bottom: 4px; }
+.r-lista { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 8px; background: var(--bg); border-left: 4px solid var(--line); font-size: 14px; }
+.r-lista.l-topo, .r-lista.l-sobe { border-left-color: var(--up); }
+.r-lista.l-abaixo, .r-lista.l-cai { border-left-color: var(--down); }
+.bar.outra { opacity: 0.45; }
+
+.r-enviar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.r-enviar .btn { flex: 1; min-width: 220px; }
+.img-ov { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 50; display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 16px; }
+.img-box { background: var(--surface); color: var(--ink); border-radius: 12px; padding: 16px; width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 12px; }
+.img-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.img-acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.img-acoes .btn { flex: 1; min-width: 150px; }
+.img-prev { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+.ex-foot { display: flex; align-items: center; gap: 12px; padding-left: 38px; flex-wrap: wrap; }
+.btn.mini { min-height: 42px; font-size: 15px; padding: 6px 14px; }
+.ex-ok { color: var(--ok); font-weight: 600; font-size: 14px; }
+.nota b { display: block; color: var(--ink); font-weight: 600; margin-top: 2px; }
+@media (max-width: 380px) { .ex-foot { padding-left: 0; } }
+.ex-nota { font-size: 13px; color: var(--red); font-weight: 500; }
+.cardio { margin-top: 14px; padding: 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.c-tit { font-family: var(--display); font-weight: 700; font-size: 19px; text-transform: uppercase; letter-spacing: 0.5px; }
+.c-presc { font-weight: 600; border-left: 3px solid var(--red); padding-left: 10px; }
+.c-campo { display: flex; flex-direction: column; gap: 4px; font-size: 14px; font-weight: 600; }
+.c-campo input { width: 100%; min-height: 44px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 16px; font-weight: 400; }
+.c-feito { align-items: center; }
+.pendente { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 12px; font-size: 14px; font-weight: 500; }
+.envio { border-color: var(--red); }
+.personal { border: 2px dashed var(--red); }
+.personal .c-campo span { font-weight: 600; }
+.set-q { display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
+.q-tit { font-size: 13px; font-weight: 600; }
+.q-reps { display: grid; gap: 6px; align-items: center; }
+.q-reps input { width: 100%; min-height: 44px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 8px 6px; font-size: 16px; text-align: center; font-variant-numeric: tabular-nums; }
+.q-reps span { font-size: 14px; color: var(--ink-2); text-align: center; }
+</style>
+<div id="app"></div>
+<script type="application/json" id="lf-dados">{"aluno":"Emanuel Pessoa Sousa","rotuloAluno":"Aluno","semanas":8,"semanaAtual":2,"versao":1,"whatsapp":"5586988211226","antigo":{"treinos":[{"id":"t1","nome":"Treino 1","foco":"Push","exercicios":[{"nome":"Supino inclinado com halteres","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Supino máquina (pegada pronada)","series":2,"meta":"10–12","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Crucifixo máquina","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Elevação frontal na polia com corda","series":2,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Elevação lateral com halteres","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Tríceps barra encostado na polia","series":3,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true}]},{"id":"t2","nome":"Treino 2","foco":"Pull","exercicios":[{"nome":"Remada baixa unilateral supinada","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Puxada neutra triângulo","series":2,"meta":"10–15","tipo":"carga","aj":true},{"nome":"Remada máquina (pegada pronada)","series":2,"meta":"8–10","tipo":"carga","aj":true,"quebrada":{"rotulo":"Série quebrada (10 + 4 + 3)","partes":3,"nota":"10 reps, descansa 10 a 15 s, mais 4 reps, descansa 10 a 15 s, mais 3 reps"}},{"nome":"Pulldown com corda","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Hiperextensão de lombar","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Rosca direta banco inclinado","series":3,"meta":"6–8","tipo":"carga","aj":true}]},{"id":"t3","nome":"Treino 3","foco":"Leg day","exercicios":[{"nome":"Prancha isométrica","series":3,"meta":"40 seg.","tipo":"tempo"},{"nome":"Abdominal remador com apoio","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Levantamento terra","series":2,"meta":"6–8","tipo":"carga","aq":true,"aj":true},{"nome":"Agachamento hack invertido","series":3,"meta":"10–12","tipo":"carga","aj":true},{"nome":"Leg press 45 pés afastados","series":2,"meta":"8–10","tipo":"carga","aj":true},{"nome":"Búlgaro com halter","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Mesa flexora","series":3,"meta":"6–8","tipo":"carga","unidade":"lbs","aq":true,"aj":true}]},{"id":"t4","nome":"Treino 4","foco":"Push","exercicios":[{"nome":"Supino inclinado com halteres","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Supino máquina (pegada pronada)","series":2,"meta":"10–12","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Crucifixo máquina","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Elevação frontal na polia com corda","series":2,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Elevação lateral com halteres","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Tríceps barra encostado na polia","series":3,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true}]},{"id":"t5","nome":"Treino 5","foco":"Full body","exercicios":[{"nome":"Agachamento livre com barra no suporte","series":2,"meta":"12–15","tipo":"carga","aq":true,"aj":true},{"nome":"Elevação de quadril na máquina","series":2,"meta":"8–10","tipo":"carga","aj":true},{"nome":"Remada curvada com barra reta (pegada pronada)","series":2,"meta":"6–8","tipo":"carga","aq":true,"aj":true},{"nome":"Puxada neutra triângulo","series":3,"meta":"10–12","tipo":"carga","aj":true},{"nome":"Supino reto máquina","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Desenvolvimento barra reta","series":2,"meta":"6–8","tipo":"carga","aj":true}]}],"progressao":[]},"novo":{"aPartirDa":2,"treinos":[{"id":"t1","nome":"Treino 1","foco":"Push","exercicios":[{"nome":"Supino inclinado com halteres","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Supino máquina (pegada pronada)","series":2,"meta":"10–12","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Crucifixo máquina","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Elevação frontal na polia com corda","series":2,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Elevação lateral com halteres","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Tríceps barra encostado na polia","series":3,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true}]},{"id":"t2","nome":"Treino 2","foco":"Pull","exercicios":[{"nome":"Remada baixa unilateral supinada","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Puxada neutra triângulo","series":2,"meta":"10–15","tipo":"carga","aj":true},{"nome":"Remada máquina (pegada pronada)","series":2,"meta":"8–10","tipo":"carga","aj":true,"quebrada":{"rotulo":"Série quebrada (10 + 4 + 3)","partes":3,"nota":"10 reps, descansa 10 a 15 s, mais 4 reps, descansa 10 a 15 s, mais 3 reps"}},{"nome":"Pulldown com corda","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Hiperextensão de lombar","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Rosca direta banco inclinado","series":3,"meta":"6–8","tipo":"carga","aj":true}]},{"id":"t3","nome":"Treino 3","foco":"Leg day","exercicios":[{"nome":"Prancha isométrica","series":3,"meta":"40 seg.","tipo":"tempo"},{"nome":"Abdominal remador com apoio","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Levantamento terra","series":2,"meta":"6–8","tipo":"carga","aq":true,"aj":true},{"nome":"Agachamento hack invertido","series":3,"meta":"10–12","tipo":"carga","aj":true},{"nome":"Leg press 45 pés afastados","series":2,"meta":"8–10","tipo":"carga","aj":true},{"nome":"Búlgaro com halter","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Mesa flexora","series":3,"meta":"6–8","tipo":"carga","unidade":"lbs","aq":true,"aj":true}]},{"id":"t4","nome":"Treino 4","foco":"Push","exercicios":[{"nome":"Supino inclinado com halteres","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Supino máquina (pegada pronada)","series":2,"meta":"10–12","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Crucifixo máquina","series":3,"meta":"10–12","tipo":"carga","unidade":"lbs"},{"nome":"Elevação frontal na polia com corda","series":2,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true},{"nome":"Elevação lateral com halteres","series":3,"meta":"10–12","tipo":"carga"},{"nome":"Tríceps barra encostado na polia","series":3,"meta":"8–10","tipo":"carga","unidade":"lbs","aj":true}]},{"id":"t5","nome":"Treino 5","foco":"Full body","exercicios":[{"nome":"Agachamento livre com barra no suporte","series":2,"meta":"12–15","tipo":"carga","aq":true,"aj":true},{"nome":"Elevação de quadril na máquina","series":2,"meta":"8–10","tipo":"carga","aj":true},{"nome":"Remada curvada com barra reta (pegada pronada)","series":2,"meta":"6–8","tipo":"carga","aq":true,"aj":true},{"nome":"Puxada neutra triângulo","series":3,"meta":"10–12","tipo":"carga","aj":true},{"nome":"Supino reto máquina","series":2,"meta":"8–10","tipo":"carga","aq":true,"aj":true},{"nome":"Desenvolvimento barra reta","series":2,"meta":"6–8","tipo":"carga","aj":true}]}]},"cardio":{}}</script>
+<script>(function () {
+  "use strict";
+  var CODIGO = document.currentScript ? document.currentScript.textContent : "";
+  var TITULO = document.title || "Plano de treino";
+  var FONTES = "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&display=swap";
+  var RESET = ":root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}";
+  var MARKUP = "<header class=\"brand\">\n  <div class=\"brand-in\">\n    <div class=\"mono\" aria-hidden=\"true\"><span>L<\/span><span class=\"f\">F<\/span><\/div>\n    <div>\n      <p class=\"brand-name\">LEONARDO <b>FRAGA<\/b><\/p>\n      <p class=\"brand-sub\">Personal Trainer · CREF 8809-G/PI<\/p>\n    <\/div>\n  <\/div>\n<\/header>\n\n<main class=\"wrap\">\n  <section class=\"intro\">\n    <p class=\"eyebrow\">Plano de treino · semanas 4 a 8<\/p>\n    <h1 id=\"aluno\"><\/h1>\n    <p class=\"hint\" id=\"como\">Coloque a data, anote a carga e as repetições e toque em Salvar exercício a cada exercício feito. No fim, toque em Concluir treino. No fim da semana, envie tudo ao Leonardo pelo WhatsApp.<\/p>\n    <p class=\"nota\">Seus registros ficam guardados neste celular, dentro do navegador em que você abriu o link. Abra sempre pelo mesmo navegador (Chrome ou Safari). <b id=contagem><\/b><\/p>\n  <\/section>\n\n  <div class=\"aviso\" id=\"aviso\" hidden><\/div>\n\n  <section class=\"painel personal\" id=\"personal\" hidden><\/section>\n\n  <nav class=\"weeks\" id=\"semanas\" aria-label=\"Semanas do plano\"><\/nav>\n\n  <section class=\"semana\" id=\"semana\" aria-live=\"off\"><\/section>\n\n  <section class=\"painel evo\" id=\"evolucao\" hidden>\n    <h2>Evolução<\/h2>\n    <label for=\"exSel\">Escolha o exercício\n      <select id=\"exSel\"><\/select>\n    <\/label>\n    <div class=\"chart\" id=\"chCarga\"><\/div>\n    <div class=\"chart neutro\" id=\"chTreinos\"><\/div>\n  <\/section>\n\n  <footer>Dúvidas? Fale com o Leonardo: (86) 98821-1226 · Instagram @_leonardofraga<\/footer>\n<\/main>\n\n<div id=\"toast\" role=\"status\" aria-live=\"polite\"><\/div>\n";
+  document.getElementById("app").innerHTML = MARKUP;
+  var S = { logs: {}, prog: {}, drafts: {}, progDraft: {}, open: {}, week: 1, exSel: null };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var fmtNum = function (v) { return v == null || v === "" ? "" : String(v).replace(".", ","); };
+  var parseNum = function (s) { s = String(s == null ? "" : s).trim().replace(",", "."); if (s === "") return null; var n = Number(s); return isFinite(n) && n >= 0 ? n : null; };
+  var quando = function (iso) { try { return new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
+  var dataBR = function (ymd) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || ""); return m ? m[3] + "/" + m[2] + "/" + m[1] : ""; };
+  var store = { get: function (k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }, del: function (k) { try { localStorage.removeItem(k); } catch (e) {} } };
+  var toastT;
+  function toast(msg) { var t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove("on"); }, 2600); }
+  function aviso(msg) { var a = $("aviso"); a.textContent = msg || ""; a.hidden = !msg; }
+
+  // ---------- plano ----------
+  var P = JSON.parse(document.getElementById("lf-dados").textContent);
+  var PRIMEIRA = P.novo.aPartirDa;
+  function treinosDa(w) { return w >= P.novo.aPartirDa ? P.novo.treinos : P.antigo.treinos; }
+  function temProgressao(w) { return w < P.novo.aPartirDa; }
+  function keyOf(w, t) { return "s" + w + "-" + t.id; }
+  function treinoById(id, w) { return treinosDa(w).filter(function (t) { return t.id === id; })[0]; }
+  function unidade(e) { return e.unidade || "kg"; }
+  function prescricao(w, t) { var c = P.cardio || {}; return (c[w] && c[w][t.id]) || (c.padrao && c.padrao[t.id]) || ""; }
+
+  // ---------- registro ----------
+  function vazio(t) {
+    return { data: "", obs: "", cardio: { feito: false, obs: "", presc: "" }, ex: t.exercicios.map(function (e) {
+      var s = []; for (var j = 0; j < e.series; j++) s.push(e.tipo === "tempo" ? { seg: "" } : { kg: "", reps: "" });
+      var x = { feito: false, s: s };
+      if (e.aq) x.aq = { kg: "", reps: "" };
+      if (e.aj) x.aj = { kg: "", reps: "" };
+      if (e.quebrada) { x.q = { kg: "" }; for (var p = 1; p <= e.quebrada.partes; p++) x.q["r" + p] = ""; }
+      return x;
+    }) };
+  }
+  function copiaSerie(alvo, s) { if (alvo && s) Object.keys(alvo).forEach(function (k) { alvo[k] = fmtNum(s[k]); }); }
+  function doDoc(t, d) {
+    var w = vazio(t); if (!d) return w;
+    (d.ex || []).forEach(function (e, i) {
+      var x = w.ex[i]; if (!x) return; x.feito = !!e.feito;
+      (e.s || []).forEach(function (s, j) { copiaSerie(x.s[j], s); });
+      copiaSerie(x.aq, e.aq); copiaSerie(x.aj, e.aj); copiaSerie(x.q, e.q);
+    });
+    w.obs = d.obs || ""; w.data = d.data || "";
+    var c = d.cardio || {}; w.cardio = { feito: !!c.feito, obs: c.obs || "", presc: c.presc || "" };
+    return w;
+  }
+  function numeros(s) { var o = {}; Object.keys(s).forEach(function (k) { o[k] = parseNum(s[k]); }); return o; }
+  function paraDoc(t, w, week) {
+    return { semana: week, treino: t.id, data: w.data, obs: w.obs.trim(), salvoEm: new Date().toISOString(),
+      cardio: { feito: !!w.cardio.feito, obs: w.cardio.obs.trim(), presc: w.cardio.presc.trim() },
+      ex: w.ex.map(function (e) {
+        var o = { feito: !!e.feito, s: e.s.map(numeros) };
+        if (e.aq) o.aq = numeros(e.aq);
+        if (e.aj) o.aj = numeros(e.aj);
+        if (e.q) o.q = numeros(e.q);
+        return o;
+      }) };
+  }
+  function rascunho(key) {
+    if (!(key in S.drafts)) { var d = store.get("lf-rascunho:" + key); S.drafts[key] = d && d.w ? d : null; }
+    return S.drafts[key];
+  }
+  function feitos(t, d) { var n = 0; t.exercicios.forEach(function (_, i) { if (d && d.ex && d.ex[i] && d.ex[i].feito) n++; }); return n; }
+  function concluido(t, d) { return !!d && (!!d.concluido || (t.exercicios.length > 0 && feitos(t, d) === t.exercicios.length)); }
+  function concluidosNaSemana(w) { var n = 0; treinosDa(w).forEach(function (t) { if (concluido(t, S.logs[keyOf(w, t)])) n++; }); return n; }
+
+  // ---------- semanas ----------
+  function renderSemanas() {
+    var html = "";
+    for (var w = PRIMEIRA; w <= P.semanas; w++) {
+      html += '<button type="button" class="wk" data-w="' + w + '" aria-pressed="' + (w === S.week) + '" aria-label="Semana ' + w + '"><i>Semana</i><b>' + w + "</b><span>" + concluidosNaSemana(w) + " de " + treinosDa(w).length + "</span></button>";
+    }
+    $("semanas").innerHTML = html;
+    var nLog = Object.keys(S.logs).length, cont = $("contagem");
+    if (cont) cont.textContent = nLog ? "Neste navegador: " + nLog + (nLog === 1 ? " treino guardado." : " treinos guardados.") : "Neste navegador: nenhum treino guardado ainda.";
+    var nSem = P.semanas - PRIMEIRA + 1; $("semanas").style.gridTemplateColumns = "repeat(" + (nSem <= 5 ? nSem : 4) + ", minmax(0, 1fr))";
+  }
+
+  // ---------- treino ----------
+  function estado(t, key) {
+    var d = S.logs[key];
+    if (rascunho(key)) return { st: "edit", txt: "Não salvo" };
+    if (concluido(t, d)) return { st: "ok", txt: "Concluído" };
+    if (d) return { st: "part", txt: feitos(t, d) + " de " + t.exercicios.length + " salvos" };
+    return { st: "", txt: "A fazer" };
+  }
+  function linhaSerie(id, e, i, sid, rot, s, nome) {
+    var u = unidade(e), base = ' autocomplete="off" data-e="' + i + '" data-s="' + sid + '"';
+    if (e.tipo === "tempo") {
+      return '<div class="set tempo"><span class="s-l">' + rot + '</span><input id="' + id + "-" + sid + '-seg" inputmode="numeric"' + base + ' data-k="seg" value="' + esc(s.seg) + '" aria-label="' + esc(e.nome) + ", " + nome + ', segundos"><span>seg</span></div>';
+    }
+    return '<div class="set' + (sid === "aq" || sid === "aj" ? " prep" : "") + '"><span class="s-l">' + rot + '</span><input id="' + id + "-" + sid + '-kg" inputmode="decimal"' + base + ' data-k="kg" value="' + esc(s.kg) + '" aria-label="' + esc(e.nome) + ", " + nome + ", carga em " + u + '"><span>' + u + '</span><span class="x">×</span><input id="' + id + "-" + sid + '-reps" inputmode="numeric"' + base + ' data-k="reps" value="' + esc(s.reps) + '" aria-label="' + esc(e.nome) + ", " + nome + ', repetições"><span>reps</span></div>';
+  }
+  function linhaQuebrada(id, e, i, q) {
+    var u = unidade(e), b = ' autocomplete="off" data-e="' + i + '" data-s="q"', h = '<div class="set-q"><p class="q-tit">' + esc(e.quebrada.rotulo) + "</p>";
+    h += '<div class="set tempo"><span class="s-l">SQ</span><input id="' + id + '-q-kg" inputmode="decimal"' + b + ' data-k="kg" value="' + esc(q.kg) + '" aria-label="' + esc(e.nome) + ", série quebrada, carga em " + u + '"><span>' + u + "</span></div>";
+    h += '<div class="q-reps" style="grid-template-columns:repeat(' + (e.quebrada.partes - 1) + ',minmax(0,1fr) 14px) minmax(0,1fr) 34px">';
+    for (var p = 1; p <= e.quebrada.partes; p++) h += '<input id="' + id + "-q-r" + p + '" inputmode="numeric"' + b + ' data-k="r' + p + '" value="' + esc(q["r" + p]) + '" aria-label="' + esc(e.nome) + ", série quebrada, repetições da parte " + p + '"><span>' + (p < e.quebrada.partes ? "+" : "reps") + "</span>";
+    return h + "</div>" + (e.quebrada.nota ? '<p class="ex-meta">' + esc(e.quebrada.nota) + "</p>" : "") + "</div>";
+  }
+  function cardHTML(t, week) {
+    var key = keyOf(week, t), d = S.logs[key], r = rascunho(key), w = r ? r.w : doDoc(t, d), e0 = estado(t, key);
+    var h = '<details class="treino" data-key="' + key + '" data-t="' + esc(t.id) + '"' + (S.open[key] ? " open" : "") + ">";
+    h += '<summary><span class="t-title"><span class="t-num">' + esc(t.nome) + '</span><span class="t-foco">' + esc(t.foco) + (w.data ? " · " + dataBR(w.data) : "") + '</span></span><span class="pill" data-pill data-st="' + e0.st + '">' + e0.txt + "</span></summary>";
+    h += '<div class="t-body"><label class="dia" for="' + key + '-data"><span>Data do treino</span><input type="date" id="' + key + '-data" data-k="data" value="' + esc(w.data) + '"></label>';
+    t.exercicios.forEach(function (e, i) {
+      var we = w.ex[i] || vazio(t).ex[i], id = key + "-e" + i, extra = [];
+      if (e.aq) extra.push("Aq = aquecimento 1x10");
+      if (e.aj) extra.push("Aj = ajuste 1x4–6");
+      h += '<div class="ex"><label class="ex-head" for="' + id + '-f"><input type="checkbox" id="' + id + '-f" data-e="' + i + '" data-k="feito"' + (we.feito ? " checked" : "") + '><span class="ex-txt"><span class="ex-nome">' + esc(e.nome) + '</span><span class="ex-meta">Meta: ' + esc(e.series + "x" + e.meta) + (e.tipo !== "tempo" && unidade(e) !== "kg" ? " · em " + unidade(e) : "") + "</span>" + (extra.length ? '<span class="ex-meta">' + extra.join(" · ") + "</span>" : "") + (e.nota ? '<span class="ex-nota">' + esc(e.nota) + "</span>" : "") + "</span></label>";
+      h += '<div class="sets">';
+      if (e.aq) h += linhaSerie(id, e, i, "aq", "Aq", we.aq || {}, "aquecimento");
+      if (e.aj) h += linhaSerie(id, e, i, "aj", "Aj", we.aj || {}, "ajuste");
+      for (var j = 0; j < e.series; j++) h += linhaSerie(id, e, i, String(j), "S" + (j + 1), we.s[j] || {}, "série " + (j + 1));
+      if (e.quebrada) h += linhaQuebrada(id, e, i, we.q || {});
+      var ok = !!(d && d.ex && d.ex[i] && d.ex[i].feito);
+      h += '</div><div class="ex-foot"><button type="button" class="btn ghost mini" data-salvar-ex="' + i + '">' + (ok ? "Salvar de novo" : "Salvar exercício") + '</button><span class="ex-ok"' + (ok ? "" : " hidden") + ">✓ Exercício salvo</span></div></div>";
+    });
+    h += '<label class="obs" for="' + key + '-obs">Observações do treino<textarea id="' + key + '-obs" data-k="obs" placeholder="Dificuldade, facilidade, execução ou algum desconforto">' + esc(w.obs) + "</textarea></label>";
+    var presc = prescricao(week, t);
+    h += '<div class="cardio"><p class="c-tit">Cardio do dia</p>';
+    h += presc ? '<p class="c-presc">' + esc(presc) + "</p>"
+      : '<label class="c-campo" for="' + key + '-cp"><span>O que o Leonardo passou</span><input id="' + key + '-cp" data-k="cpresc" autocomplete="off" placeholder="Ex.: esteira 20 min, caminhada leve" value="' + esc(w.cardio.presc) + '"></label>';
+    h += '<label class="ex-head c-feito" for="' + key + '-cf"><input type="checkbox" id="' + key + '-cf" data-k="cfeito"' + (w.cardio.feito ? " checked" : "") + '><span class="ex-nome">Fiz o cardio</span></label>';
+    h += '<label class="c-campo" for="' + key + '-co"><span>Observação do cardio</span><input id="' + key + '-co" data-k="cobs" autocomplete="off" placeholder="Como foi, tempo real, intensidade" value="' + esc(w.cardio.obs) + '"></label></div>';
+    h += '<div class="t-foot"><p class="saved" data-saved>' + (d ? "Salvo em " + esc(quando(d.salvoEm)) : "Ainda não foi salvo") + '</p><button type="button" class="btn" data-salvar>' + (d && d.concluido ? "Salvar de novo" : "Concluir treino") + '</button></div>';
+    if (d && d.concluido) h += resumoTreinoHTML(t, week, d);
+    return h + "</div></details>";
+  }
+  function progHTML(week) {
+    if (!temProgressao(week)) return "";
+    var itens = P.antigo.progressao || [], d = S.prog["s" + week], marc = S.progDraft[week] || (d && d.itens) || [];
+    var h = '<section class="painel" id="prog"><h2>Controle de progressão</h2><p class="hint">Marque o que vale para a próxima semana.</p><div class="opts">';
+    itens.forEach(function (txt, i) { h += '<label class="opt" for="prog-' + week + "-" + i + '"><input type="checkbox" id="prog-' + week + "-" + i + '" data-prog="' + i + '"' + (marc.indexOf(txt) >= 0 ? " checked" : "") + "><span>" + esc(txt) + "</span></label>"; });
+    return h + '</div><div class="t-foot"><p class="saved" data-prog-saved>' + (S.progDraft[week] ? "Alterações não salvas" : d ? "Salvo em " + esc(quando(d.salvoEm)) : "Ainda não foi salvo") + '</p><button type="button" class="btn" data-salvar-prog>Salvar controle</button></div></section>';
+  }
+
+  // ---------- envio semanal ----------
+  function v(n) { return n == null || n === "" ? "__" : fmtNum(n); }
+  function textoSemana(week) {
+    var L = ["REGISTRO DA SEMANA " + week, (P.rotuloAluno || "Aluna") + ": " + P.aluno, ""];
+    treinosDa(week).forEach(function (t) {
+      var d = S.logs[keyOf(week, t)];
+      L.push((t.nome + " · " + t.foco).toUpperCase() + (d && d.data ? " · " + dataBR(d.data) : ""));
+      if (!d) { L.push("Não registrado", ""); return; }
+      t.exercicios.forEach(function (e, i) {
+        var x = (d.ex && d.ex[i]) || { s: [] }, u = unidade(e), p = [];
+        var par = function (rot, q) { q = q || {}; p.push(rot + " " + (e.tipo === "tempo" ? v(q.seg) + " seg" : v(q.kg) + u + "×" + v(q.reps))); };
+        if (e.aq) par("Aq", x.aq);
+        if (e.aj) par("Aj", x.aj);
+        for (var j = 0; j < e.series; j++) par("S" + (j + 1), x.s && x.s[j]);
+        if (e.quebrada) { var q = x.q || {}, rr = []; for (var pp = 1; pp <= e.quebrada.partes; pp++) rr.push(v(q["r" + pp])); p.push("Série quebrada " + v(q.kg) + u + "×" + rr.join("+")); }
+        L.push(e.nome + (x.feito ? " ✓" : "") + tagTexto(e, x, week, t), p.join(" · "));
+      });
+      L.push("Obs: " + (d.obs || "sem observações"));
+      var c = d.cardio || {}, presc = prescricao(week, t) || c.presc;
+      L.push("Cardio: " + (presc || "não informado") + " · " + (c.feito ? "fez" : "não fez") + (c.obs ? " · " + c.obs : ""), "");
+    });
+    var pr = S.prog["s" + week];
+    if (temProgressao(week) && pr) L.push("CONTROLE DE PROGRESSÃO", pr.itens && pr.itens.length ? pr.itens.map(function (x) { return "[x] " + x; }).join("\n") : "Nada marcado");
+    L = L.concat(resumoTexto(week));
+    return L.join("\n").trim();
+  }
+  function envioHTML(week) {
+    var ts = treinosDa(week), salvos = ts.filter(function (t) { return S.logs[keyOf(week, t)]; }).length;
+    var pend = ts.filter(function (t) { return rascunho(keyOf(week, t)); }).map(function (t) { return t.nome; });
+    var h = '<section class="painel envio" id="envio"><h2>Enviar a semana</h2><p class="hint">' + salvos + " de " + ts.length + " treinos salvos nesta semana. Envie ao Leonardo no dia combinado.</p>";
+    if (pend.length) h += '<p class="pendente">' + esc(pend.join(", ")) + " com alterações não salvas. Salve antes de enviar.</p>";
+    if (!salvos) return h + '<p class="vazio">Salve pelo menos um treino para liberar o envio.</p></section>';
+    var txt = textoSemana(week), url = "https://wa.me/" + P.whatsapp + "?text=" + encodeURIComponent(txt);
+    return h + '<div class="enviar"><a class="btn zap" target="_blank" rel="noopener" href="' + esc(url) + '">Enviar semana ' + week + ' pelo WhatsApp</a><button type="button" class="btn ghost" data-copiar>Copiar registro</button><textarea class="copia" readonly hidden aria-label="Registro da semana para copiar">' + esc(txt) + "</textarea></div></section>";
+  }
+  function refreshEnvio() { var rs = $("resumo-semana"); if (rs) { var t0 = document.createElement("div"); t0.innerHTML = resumoSemanaHTML(S.week); rs.replaceWith(t0.firstChild); } var a = $("envio"); if (!a) return; var tmp = document.createElement("div"); tmp.innerHTML = envioHTML(S.week); a.replaceWith(tmp.firstChild); }
+  function copiar(btn) {
+    var ta = btn.parentNode.querySelector(".copia"), mostrar = function () { ta.hidden = false; ta.focus(); ta.select(); toast("Selecione o texto e copie"); };
+    try { navigator.clipboard.writeText(ta.value).then(function () { toast("Registro copiado"); }, mostrar); } catch (e) { mostrar(); }
+  }
+
+
+  // ---------- resumo de desempenho ----------
+  var LBS = 0.4536;
+  function arred(x) { return Math.round(x * 10) / 10; }
+  function milhar(x) { return Math.round(x).toLocaleString("pt-BR"); }
+  function faixa(e) { var m = /(\d+)\s*[–-]\s*(\d+)/.exec(String(e.meta)); if (m) return [+m[1], +m[2]]; var n = /(\d+)/.exec(String(e.meta)); return n ? [+n[1], +n[1]] : null; }
+  function melhor(e, x) {
+    var b = null;
+    ((x && x.s) || []).forEach(function (s) {
+      if (e.tipo === "tempo") { if (typeof s.seg === "number" && s.seg > 0 && (!b || s.seg > b.carga)) b = { carga: s.seg, reps: null }; return; }
+      if (typeof s.kg !== "number") return;
+      var r = typeof s.reps === "number" ? s.reps : null;
+      if (!b || s.kg > b.carga || (s.kg === b.carga && (r || 0) > (b.reps || 0))) b = { carga: s.kg, reps: r };
+    });
+    return b;
+  }
+  function forca(e, b) { if (!b) return null; return e.tipo === "tempo" ? b.carga : b.carga * (1 + (b.reps || 0) / 30); }
+  function volumeEx(e, x) {
+    if (e.tipo === "tempo") return 0;
+    var f = unidade(e) === "lbs" ? LBS : 1, v = 0;
+    ((x && x.s) || []).forEach(function (s) { if (typeof s.kg === "number" && typeof s.reps === "number") v += s.kg * s.reps * f; });
+    return v;
+  }
+  function metaStatus(e, x) {
+    var fx = faixa(e); if (!fx) return null;
+    var reps = [];
+    ((x && x.s) || []).forEach(function (s) { var r = e.tipo === "tempo" ? s.seg : s.reps; if (typeof r === "number") reps.push(r); });
+    if (!reps.length) return null;
+    if (reps.every(function (r) { return r >= fx[1]; })) return { st: "topo", txt: e.tipo === "tempo" ? "Meta de tempo batida" : "Topo da faixa: pode subir carga" };
+    if (reps.some(function (r) { return r < fx[0]; })) return { st: "abaixo", txt: "Abaixo da meta" };
+    return { st: "meta", txt: "Dentro da meta" };
+  }
+  function anteriorEx(nome, w, t) {
+    for (var ww = w; ww >= 1; ww--) {
+      var ts = treinosDa(ww), lim = ww === w ? ts.indexOf(t) : ts.length;
+      for (var k = lim - 1; k >= 0; k--) {
+        var tt = ts[k], d = S.logs[keyOf(ww, tt)]; if (!d || !d.ex) continue;
+        for (var i = 0; i < tt.exercicios.length; i++) { var e = tt.exercicios[i]; if (e.nome !== nome) continue; var b = melhor(e, d.ex[i]); if (b) return { b: b, e: e, w: ww }; }
+      }
+    }
+    return null;
+  }
+  function compara(e, atual, ant) {
+    if (!atual) return { st: "sem", txt: "Sem registro" };
+    if (!ant) return { st: "novo", txt: "Primeiro registro" };
+    var u = e.tipo === "tempo" ? "seg" : unidade(e), a = ant.b, fa = forca(e, atual), fb = forca(ant.e, a), pct = fb ? (fa - fb) / fb : 0, dif = arred(atual.carga - a.carga);
+    if (dif > 0) return { st: "sobe", txt: "↑ +" + fmtNum(dif) + " " + u, pct: pct };
+    if (dif < 0) return { st: "cai", txt: "↓ " + fmtNum(dif) + " " + u, pct: pct };
+    if (e.tipo !== "tempo" && atual.reps != null && a.reps != null && atual.reps !== a.reps) {
+      var dr = atual.reps - a.reps;
+      return { st: dr > 0 ? "sobe" : "cai", txt: (dr > 0 ? "↑ +" : "↓ ") + dr + " reps", pct: pct };
+    }
+    return { st: "igual", txt: "= Manteve", pct: 0 };
+  }
+  function descreve(e, b) { if (!b) return "sem séries anotadas"; return e.tipo === "tempo" ? fmtNum(b.carga) + " seg" : fmtNum(b.carga) + " " + unidade(e) + (b.reps != null ? " × " + b.reps : ""); }
+  function linhaResumo(nome, sub, c, meta) {
+    var p = c.pct || 0, lim = 0.2, larg = Math.min(Math.abs(p), lim) / lim * 50, pos = p >= 0 ? 50 : 50 - larg;
+    var barra = c.st === "sobe" || c.st === "cai" || c.st === "igual" ? '<span class="r-fill r-' + c.st + '" style="left:' + pos.toFixed(1) + "%;width:" + Math.max(larg, c.st === "igual" ? 0 : 2).toFixed(1) + '%"></span>' : "";
+    return '<div class="r-row"><div class="r-nome">' + esc(nome) + "<small>" + esc(sub) + (meta ? ' · <em class="m-' + meta.st + '">' + esc(meta.txt) + "</em>" : "") + '</small></div><div class="r-graf"><div class="r-track"><span class="r-mid"></span>' + barra + '</div><span class="r-chip r-' + c.st + '">' + esc(c.txt) + (c.pct && (c.st === "sobe" || c.st === "cai") ? " (" + (c.pct > 0 ? "+" : "") + Math.round(c.pct * 100) + "%)" : "") + "</span></div></div>";
+  }
+  function legenda() { return '<p class="r-leg">A barra mostra a variação do desempenho (carga e repetições juntas) em relação à última vez que o exercício foi feito. Verde subiu, vermelho caiu.</p>'; }
+  function resumoTreinoHTML(t, week, d) {
+    var linhas = "", vol = 0, feitosN = 0, sobe = 0, cai = 0;
+    t.exercicios.forEach(function (e, i) {
+      var x = d.ex && d.ex[i]; if (x && x.feito) feitosN++;
+      var b = melhor(e, x); vol += volumeEx(e, x);
+      if (!b) return;
+      var c = compara(e, b, anteriorEx(e.nome, week, t)); if (c.st === "sobe") sobe++; if (c.st === "cai") cai++;
+      linhas += linhaResumo(e.nome, descreve(e, b), c, metaStatus(e, x));
+    });
+    var cd = d.cardio || {};
+    var h = '<div class="resumo"><p class="r-tit">Resumo do treino</p><div class="r-kpis"><span><b>' + feitosN + "/" + t.exercicios.length + "</b>exercícios</span><span><b>" + milhar(vol) + " kg</b>volume</span><span><b>" + sobe + " ↑ · " + cai + " ↓</b>evolução</span><span><b>" + (cd.feito ? "Fez" : "Não fez") + "</b>cardio</span></div>";
+    return h + (linhas || '<p class="vazio">Anote as cargas para ver a comparação.</p>') + (linhas ? legenda() : "") + '<div class="r-enviar"><button type="button" class="btn ghost" data-img-treino>Enviar gráfico deste treino ao Leonardo</button></div></div>';
+  }
+  function semanaEx(w) {
+    var mapa = {}, ordemN = [];
+    treinosDa(w).forEach(function (t) {
+      var d = S.logs[keyOf(w, t)]; if (!d || !d.ex) return;
+      t.exercicios.forEach(function (e, i) {
+        var x = d.ex[i], b = melhor(e, x); if (!b) return;
+        var m = metaStatus(e, x), it = mapa[e.nome];
+        if (!it) { it = mapa[e.nome] = { e: e, b: b, metas: [] }; ordemN.push(e.nome); }
+        else if (forca(e, b) > forca(it.e, it.b)) { it.b = b; it.e = e; }
+        if (m) it.metas.push(m.st);
+      });
+    });
+    return { mapa: mapa, nomes: ordemN };
+  }
+  function volumeSemana(w) {
+    var v = 0;
+    treinosDa(w).forEach(function (t) { var d = S.logs[keyOf(w, t)]; if (!d || !d.ex) return; t.exercicios.forEach(function (e, i) { v += volumeEx(e, d.ex[i]); }); });
+    return v;
+  }
+  function analiseSemana(w) {
+    var atual = semanaEx(w), res = { linhas: [], sobe: [], cai: [], topo: [], abaixo: [] };
+    atual.nomes.forEach(function (nome) {
+      var it = atual.mapa[nome], ant = null;
+      for (var ww = w - 1; ww >= 1 && !ant; ww--) { var p = semanaEx(ww).mapa[nome]; if (p) ant = { b: p.b, e: p.e, w: ww }; }
+      var c = compara(it.e, it.b, ant), meta = null;
+      if (it.metas.length) {
+        if (it.metas.indexOf("abaixo") >= 0) meta = { st: "abaixo", txt: "Abaixo da meta" };
+        else if (it.metas.every(function (m) { return m === "topo"; })) meta = { st: "topo", txt: it.e.tipo === "tempo" ? "Meta de tempo batida" : "Topo da faixa: pode subir carga" };
+        else meta = { st: "meta", txt: "Dentro da meta" };
+      }
+      res.linhas.push({ nome: nome, e: it.e, b: it.b, c: c, meta: meta });
+      if (c.st === "sobe") res.sobe.push(nome + " (" + c.txt.replace("↑ ", "") + ")");
+      if (c.st === "cai") res.cai.push(nome + " (" + c.txt.replace("↓ ", "") + ")");
+      if (meta && meta.st === "topo") res.topo.push(nome);
+      if (meta && meta.st === "abaixo") res.abaixo.push(nome);
+    });
+    return res;
+  }
+  function barrasHTML(titulo, vals, teto, un, vazioMsg) {
+    var tem = vals.some(function (x) { return x != null && x > 0; });
+    var max = teto || Math.max.apply(null, vals.map(function (x) { return x || 0; })) || 1, h = "<h3>" + esc(titulo) + "</h3>";
+    if (!tem) return '<div class="chart">' + h + '<p class="vazio">' + esc(vazioMsg) + "</p></div>";
+    h += '<div class="plot" style="grid-template-columns:repeat(' + vals.length + ',minmax(0,1fr))">';
+    vals.forEach(function (x, i) {
+      var pct = x ? Math.max(2, Math.round((x / max) * 100)) : 0, sem = PRIMEIRA + i;
+      h += '<div class="col" title="Semana ' + sem + ": " + (x ? milhar(x) + " " + un : "sem registro") + '"><span class="val">' + (x ? milhar(x) : "") + '</span><div class="track">' + (pct ? '<div class="bar' + (sem === S.week ? "" : " outra") + '" style="height:' + pct + '%"></div>' : "") + '</div><span class="lab">' + sem + "</span></div>";
+    });
+    return '<div class="chart">' + h + '</div><p class="axis">Semana</p></div>';
+  }
+  function cardioSemana(w) { var n = 0, f = 0; treinosDa(w).forEach(function (t) { var d = S.logs[keyOf(w, t)]; if (!d) return; n++; if (d.cardio && d.cardio.feito) f++; }); return { n: n, f: f }; }
+  function lista(titulo, itens, cls) { return itens.length ? '<div class="r-lista ' + cls + '"><b>' + esc(titulo) + "</b><span>" + esc(itens.join(" · ")) + "</span></div>" : ""; }
+  function resumoSemanaHTML(w) {
+    var ts = treinosDa(w), salvos = ts.filter(function (t) { return S.logs[keyOf(w, t)]; }).length;
+    if (!salvos) return '<section class="painel resumo-sem" id="resumo-semana" hidden></section>';
+    var a = analiseSemana(w), vol = volumeSemana(w), volAnt = w > 1 ? volumeSemana(w - 1) : 0, cd = cardioSemana(w), vols = [];
+    for (var s = PRIMEIRA; s <= P.semanas; s++) vols.push(volumeSemana(s));
+    var dv = volAnt ? Math.round((vol - volAnt) / volAnt * 100) : null;
+    var h = '<section class="painel resumo-sem" id="resumo-semana"><h2>Resumo da semana ' + w + '</h2><p class="hint">Para o Leonardo ver o que ajustar. No fim, toque no botão para mandar este gráfico a ele.</p>';
+    h += '<div class="r-kpis"><span><b>' + concluidosNaSemana(w) + "/" + ts.length + "</b>treinos concluídos</span><span><b>" + cd.f + "/" + cd.n + "</b>cardio feito</span><span><b>" + milhar(vol) + " kg</b>volume" + (dv != null ? ' <i class="' + (dv >= 0 ? "m-up" : "m-down") + '">' + (dv > 0 ? "+" : "") + dv + "% vs sem. " + (w - 1) + "</i>" : "") + "</span><span><b>" + a.sobe.length + " ↑ · " + a.cai.length + " ↓</b>exercícios</span></div>";
+    h += barrasHTML("Volume por semana (kg levantados)", vols, 0, "kg", "Sem volume anotado ainda.");
+    h += '<div class="r-bloco"><h3>Evolução por exercício (vs semana anterior)</h3>';
+    a.linhas.forEach(function (l) { h += linhaResumo(l.nome, descreve(l.e, l.b), l.c, l.meta); });
+    h += legenda() + "</div>";
+    h += lista("Pode subir carga", a.topo, "l-topo") + lista("Abaixo da meta", a.abaixo, "l-abaixo") + lista("Subiram", a.sobe, "l-sobe") + lista("Caíram", a.cai, "l-cai");
+    h += '<div class="r-enviar"><button type="button" class="btn" data-img-semana>Enviar gráfico da semana ao Leonardo</button></div>';
+    return h + "</section>";
+  }
+  function tagTexto(e, x, w, t) {
+    var b = melhor(e, x); if (!b) return "";
+    var c = compara(e, b, anteriorEx(e.nome, w, t)), m = metaStatus(e, x), p = [];
+    if (c.st === "sobe" || c.st === "cai" || c.st === "igual") p.push(c.txt);
+    if (m && m.st !== "meta") p.push(m.st === "topo" ? (e.tipo === "tempo" ? "meta batida" : "pode subir carga") : "abaixo da meta");
+    return p.length ? " · " + p.join(" · ") : "";
+  }
+  function resumoTexto(w) {
+    var a = analiseSemana(w), vol = volumeSemana(w), volAnt = w > 1 ? volumeSemana(w - 1) : 0, cd = cardioSemana(w), L = ["", "RESUMO DA SEMANA " + w];
+    L.push("Treinos concluídos: " + concluidosNaSemana(w) + "/" + treinosDa(w).length + " · Cardio: " + cd.f + "/" + cd.n);
+    L.push("Volume: " + milhar(vol) + " kg" + (volAnt ? " (" + (vol >= volAnt ? "+" : "") + Math.round((vol - volAnt) / volAnt * 100) + "% vs semana " + (w - 1) + ")" : ""));
+    if (a.sobe.length) L.push("Subiram: " + a.sobe.join("; "));
+    if (a.cai.length) L.push("Caíram: " + a.cai.join("; "));
+    if (a.topo.length) L.push("Pode subir carga: " + a.topo.join("; "));
+    if (a.abaixo.length) L.push("Abaixo da meta: " + a.abaixo.join("; "));
+    return L;
+  }
+
+
+  // ---------- resumo em imagem (para mandar ao Leonardo) ----------
+  function dadosTreino(t, week, d) {
+    var linhas = [], vol = 0, n = 0, sobe = 0, cai = 0;
+    t.exercicios.forEach(function (e, i) {
+      var x = d.ex && d.ex[i]; if (x && x.feito) n++;
+      var b = melhor(e, x); vol += volumeEx(e, x); if (!b) return;
+      var c = compara(e, b, anteriorEx(e.nome, week, t)); if (c.st === "sobe") sobe++; if (c.st === "cai") cai++;
+      linhas.push({ nome: e.nome, sub: descreve(e, b), c: c, meta: metaStatus(e, x) });
+    });
+    return { titulo: "Resumo do " + t.nome + " · " + t.foco, sub: "Semana " + week + (d.data ? " · " + dataBR(d.data) : ""), arquivo: "resumo-semana" + week + "-" + t.id,
+      kpis: [[n + "/" + t.exercicios.length, "exercícios"], [milhar(vol) + " kg", "volume"], [sobe + " ↑ · " + cai + " ↓", "evolução"], [d.cardio && d.cardio.feito ? "Fez" : "Não fez", "cardio"]],
+      linhas: linhas, obs: d.obs || "", listas: [] };
+  }
+  function dadosSemana(w) {
+    var a = analiseSemana(w), vol = volumeSemana(w), volAnt = w > 1 ? volumeSemana(w - 1) : 0, cd = cardioSemana(w), vols = [];
+    for (var s = PRIMEIRA; s <= P.semanas; s++) vols.push(volumeSemana(s));
+    var dv = volAnt ? Math.round((vol - volAnt) / volAnt * 100) : null;
+    return { titulo: "Resumo da semana " + w, sub: "", arquivo: "resumo-semana" + w,
+      kpis: [[concluidosNaSemana(w) + "/" + treinosDa(w).length, "treinos concluídos"], [cd.f + "/" + cd.n, "cardio feito"], [milhar(vol) + " kg", "volume" + (dv != null ? " (" + (dv > 0 ? "+" : "") + dv + "% vs sem. " + (w - 1) + ")" : "")], [a.sobe.length + " ↑ · " + a.cai.length + " ↓", "exercícios"]],
+      vols: vols, linhas: a.linhas.map(function (l) { return { nome: l.nome, sub: descreve(l.e, l.b), c: l.c, meta: l.meta }; }),
+      listas: [["Pode subir carga", a.topo, "up"], ["Abaixo da meta", a.abaixo, "down"], ["Subiram", a.sobe, "up"], ["Caíram", a.cai, "down"]] };
+  }
+  var COR = { bg: "#ffffff", soft: "#f6f3f3", ink: "#161313", ink2: "#625a5a", line: "#e2dcdc", red: "#d90429", black: "#111111", up: "#17794a", down: "#b42318" };
+  var FD = '"Barlow Condensed", "Arial Narrow", Arial, sans-serif', FB = '"Barlow", Arial, sans-serif';
+  function quebra(ctx, txt, larg) {
+    var pal = String(txt).split(" "), L = [], cur = "";
+    pal.forEach(function (p) { var t = cur ? cur + " " + p : p; if (ctx.measureText(t).width > larg && cur) { L.push(cur); cur = p; } else cur = t; });
+    if (cur) L.push(cur); return L;
+  }
+  function desenhar(ctx, D, W) {
+    var M = 48, y = 0, iw = W - 2 * M;
+    function fonte(px, peso, fam) { ctx.font = (peso || 400) + " " + px + "px " + (fam || FB); }
+    function texto(t, x, yy, cor, alin) { ctx.fillStyle = cor; ctx.textAlign = alin || "left"; ctx.fillText(t, x, yy); }
+    function rr(x, yy, w, h, r, cor, borda) { ctx.beginPath(); ctx.moveTo(x + r, yy); ctx.arcTo(x + w, yy, x + w, yy + h, r); ctx.arcTo(x + w, yy + h, x, yy + h, r); ctx.arcTo(x, yy + h, x, yy, r); ctx.arcTo(x, yy, x + w, yy, r); ctx.closePath(); if (cor) { ctx.fillStyle = cor; ctx.fill(); } if (borda) { ctx.strokeStyle = borda; ctx.lineWidth = 2; ctx.stroke(); } }
+    ctx.textBaseline = "alphabetic";
+    // faixa da marca
+    ctx.fillStyle = COR.black; ctx.fillRect(0, 0, W, 150); ctx.fillStyle = COR.red; ctx.fillRect(0, 150, W, 8);
+    fonte(64, "italic 700", FD); texto("L", M, 98, "#fff"); var lw = ctx.measureText("L").width; texto("F", M + lw - 4, 98, COR.red);
+    fonte(40, 700, FD); texto("LEONARDO", M + 110, 80, "#fff"); var nw = ctx.measureText("LEONARDO ").width; texto("FRAGA", M + 110 + nw, 80, COR.red);
+    fonte(24); texto("Personal Trainer · CREF 8809-G/PI", M + 110, 116, "#b9b2b2");
+    y = 222;
+    fonte(52, 700, FD); texto(D.titulo.toUpperCase(), M, y, COR.ink); y += 44;
+    fonte(28, 500); texto(P.aluno + (D.sub ? " · " + D.sub : ""), M, y, COR.ink2); y += 36;
+    // números
+    var kw = (iw - 3 * 16) / 4;
+    D.kpis.forEach(function (k, i) {
+      var x = M + i * (kw + 16); rr(x, y, kw, 130, 14, COR.soft, COR.line);
+      fonte(40, 700, FD); texto(k[0], x + 18, y + 58, COR.ink);
+      fonte(22); quebra(ctx, k[1], kw - 32).slice(0, 2).forEach(function (l, j) { texto(l, x + 18, y + 92 + j * 26, COR.ink2); });
+    });
+    y += 196;
+    // volume por semana
+    if (D.vols) {
+      fonte(30, 600); texto("Volume por semana (kg levantados)", M, y, COR.ink); y += 24;
+      var max = Math.max.apply(null, D.vols) || 1, n = D.vols.length, cw = iw / n, ch = 220, base = y + 40 + ch;
+      D.vols.forEach(function (v, i) {
+        var x = M + i * cw, h = v ? Math.max(4, v / max * ch) : 0, bw = Math.min(90, cw * 0.6), bx = x + (cw - bw) / 2, sem = PRIMEIRA + i;
+        if (h) { ctx.globalAlpha = sem === S.week ? 1 : 0.45; rr(bx, base - h, bw, h, 6, COR.red); ctx.globalAlpha = 1; fonte(22, 600); texto(milhar(v), x + cw / 2, base - h - 10, COR.ink, "center"); }
+        fonte(22); texto("Sem. " + sem, x + cw / 2, base + 32, COR.ink2, "center");
+      });
+      ctx.fillStyle = COR.ink2; ctx.fillRect(M, base, iw, 2);
+      y = base + 76;
+    }
+    // evolução por exercício
+    if (D.linhas.length) {
+      fonte(30, 600); texto("Evolução por exercício (vs última vez)", M, y, COR.ink); y += 18;
+      D.linhas.forEach(function (l) {
+        ctx.fillStyle = COR.line; ctx.fillRect(M, y + 10, iw, 2); y += 48;
+        fonte(28, 600); var nl = quebra(ctx, l.nome, iw); nl.forEach(function (t, j) { texto(t, M, y + j * 34, COR.ink); }); y += (nl.length - 1) * 34 + 34;
+        fonte(23); texto(l.sub, M, y, COR.ink2); var sw = ctx.measureText(l.sub + "  ·  ").width;
+        if (l.meta) { fonte(23, 600); texto("·  " + l.meta.txt, M + ctx.measureText(l.sub + "  ").width + 4, y, l.meta.st === "topo" ? COR.up : l.meta.st === "abaixo" ? COR.down : COR.ink2); }
+        y += 22;
+        var chip = l.c.txt + (l.c.pct && (l.c.st === "sobe" || l.c.st === "cai") ? " (" + (l.c.pct > 0 ? "+" : "") + Math.round(l.c.pct * 100) + "%)" : "");
+        fonte(24, 700); var cwid = ctx.measureText(chip).width + 32, tw = iw - cwid - 20, ty = y + 10;
+        rr(M, ty, tw, 20, 10, COR.soft, COR.line);
+        var p = l.c.pct || 0, larg = Math.min(Math.abs(p), 0.2) / 0.2 * (tw / 2), cor = l.c.st === "sobe" ? COR.up : l.c.st === "cai" ? COR.down : null;
+        if (cor && larg > 0) { var bx2 = p >= 0 ? M + tw / 2 : M + tw / 2 - larg; rr(bx2, ty, Math.max(larg, 8), 20, 10, cor); }
+        ctx.fillStyle = COR.ink2; ctx.fillRect(M + tw / 2 - 1, ty - 5, 3, 30);
+        var ccor = cor || COR.ink2; rr(M + iw - cwid, ty - 12, cwid, 44, 22, "#fff", ccor); texto(chip, M + iw - cwid / 2, ty + 18, ccor, "center");
+        y += 44;
+      });
+      y += 20; fonte(21); quebra(ctx, "A barra mostra a variação do desempenho (carga e repetições juntas) em relação à última vez que o exercício foi feito. Verde subiu, vermelho caiu.", iw).forEach(function (t) { texto(t, M, y + 6, COR.ink2); y += 28; });
+      y += 20;
+    }
+    // listas
+    D.listas.forEach(function (li) {
+      if (!li[1].length) return;
+      fonte(25); var ls = quebra(ctx, li[1].join(" · "), iw - 48), h = 60 + ls.length * 32;
+      rr(M, y, iw, h, 12, COR.soft); ctx.fillStyle = li[2] === "up" ? COR.up : COR.down; ctx.fillRect(M, y, 8, h);
+      fonte(26, 700); texto(li[0], M + 28, y + 40, COR.ink);
+      fonte(25); ls.forEach(function (t, j) { texto(t, M + 28, y + 76 + j * 32, COR.ink); });
+      y += h + 16;
+    });
+    if (D.obs) {
+      fonte(25); var ob = quebra(ctx, D.obs, iw - 48), h2 = 60 + ob.length * 32;
+      rr(M, y, iw, h2, 12, COR.soft); fonte(26, 700); texto("Observações", M + 24, y + 40, COR.ink);
+      fonte(25); ob.forEach(function (t, j) { texto(t, M + 24, y + 76 + j * 32, COR.ink); }); y += h2 + 16;
+    }
+    y += 20; fonte(21); texto("Gerado em " + dataBR(hojeYMD()) + " pelo plano de treino online", M, y, COR.ink2); y += 40;
+    return y;
+  }
+  function imagem(D) {
+    var W = 1080, c = document.createElement("canvas"); c.width = W; c.height = 4000;
+    var h = desenhar(c.getContext("2d"), D, W);
+    c.height = Math.ceil(h); var ctx = c.getContext("2d"); ctx.fillStyle = COR.bg; ctx.fillRect(0, 0, W, c.height); desenhar(ctx, D, W);
+    return c;
+  }
+  var DL = null, IMG = null;
+  function fecharImagem() { var o = $("img-resumo"); if (o) o.remove(); if (IMG && IMG.url) URL.revokeObjectURL(IMG.url); IMG = null; }
+  function abrirImagem(D) {
+    fecharImagem();
+    var pronto = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    pronto.then(function () {
+      var c = imagem(D);
+      c.toBlob(function (blob) {
+        if (!blob) { toast("Não deu para gerar a imagem aqui."); return; }
+        var nome = D.arquivo + "-" + P.aluno.split(" ")[0].normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase() + ".png";
+        var file = null; try { file = new File([blob], nome, { type: "image/png" }); } catch (e) {}
+        var podeShare = !!(file && navigator.canShare && navigator.canShare({ files: [file] }));
+        IMG = { blob: blob, file: file, nome: nome, url: URL.createObjectURL(blob) };
+        var o = document.createElement("div"); o.id = "img-resumo"; o.className = "img-ov"; o.setAttribute("role", "dialog"); o.setAttribute("aria-modal", "true"); o.setAttribute("aria-label", "Imagem do resumo");
+        o.innerHTML = '<div class="img-box"><div class="img-top"><h2>Enviar ao Leonardo</h2><button type="button" class="btn ghost mini" data-img-fechar>Fechar</button></div>' +
+          '<p class="hint">' + (podeShare ? "Toque em Compartilhar e escolha o WhatsApp do Leonardo." : "Salve a imagem e envie no WhatsApp do Leonardo. Se o botão não funcionar, toque e segure a imagem para salvar.") + '</p>' +
+          '<div class="img-acoes">' + (podeShare ? '<button type="button" class="btn" data-img-share>Compartilhar</button>' : "") + '<button type="button" class="btn' + (podeShare ? " ghost" : "") + '" data-img-salvar>Salvar imagem</button></div>' +
+          '<img class="img-prev" alt="' + esc(D.titulo + " de " + P.aluno) + '" src="' + IMG.url + '"></div>';
+        document.body.appendChild(o);
+        o.querySelector("[data-img-fechar]").focus();
+      }, "image/png");
+    });
+  }
+  function compartilharImagem() {
+    if (!IMG) return;
+    navigator.share({ files: [IMG.file], title: "Resumo do treino", text: "Resumo de " + P.aluno }).catch(function (e) { if (!e || e.name !== "AbortError") salvarImagem(); });
+  }
+  function salvarImagem() {
+    if (!IMG) return;
+    var baixar = function () { var a = document.createElement("a"); a.href = IMG.url; a.download = IMG.nome; document.body.appendChild(a); a.click(); a.remove(); toast("Se não baixou, toque e segure a imagem para salvar."); };
+    if (!DL) return baixar();
+    DL.save({ filename: IMG.nome, data: IMG.blob }).then(function () { toast("Imagem salva. Agora envie no WhatsApp do Leonardo."); }, function (e) { var c = e && e.code; if (c === "declined") return; if (c === "rate_limited") return toast("Espere um instante e tente de novo."); baixar(); });
+  }
+  document.addEventListener("click", function (ev) {
+    if (ev.target.closest("[data-img-fechar]") || ev.target.id === "img-resumo") return fecharImagem();
+    if (ev.target.closest("[data-img-share]")) return compartilharImagem();
+    if (ev.target.closest("[data-img-salvar]")) return salvarImagem();
+    var it = ev.target.closest("[data-img-treino]");
+    if (it) { var card = it.closest(".treino"), t = treinoById(card.dataset.t, S.week), d = S.logs[card.dataset.key]; if (t && d) abrirImagem(dadosTreino(t, S.week, d)); return; }
+    if (ev.target.closest("[data-img-semana]")) abrirImagem(dadosSemana(S.week));
+  });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && $("img-resumo")) fecharImagem(); });
+  (function () { try { if (window.claude && claude.use) claude.use("downloads").then(function (d) { DL = d; }, function () {}); } catch (e) {} })();
+
+  function renderSemana() {
+    var h = '<div class="semana-head"><h2>Semana ' + S.week + '</h2><p class="hint">' + "Toque no treino do dia para abrir." + "</p></div>";
+    treinosDa(S.week).forEach(function (t) { h += cardHTML(t, S.week); });
+    $("semana").innerHTML = h + progHTML(S.week) + resumoSemanaHTML(S.week) + envioHTML(S.week);
+  }
+  function refreshCard(key) {
+    var card = document.querySelector('.treino[data-key="' + key + '"]'); if (!card || rascunho(key)) return;
+    var t = treinoById(card.dataset.t, S.week); if (!t) return;
+    var tmp = document.createElement("div"); tmp.innerHTML = cardHTML(t, S.week); card.replaceWith(tmp.firstChild);
+  }
+  function lerCard(card, t) {
+    var w = vazio(t);
+    card.querySelectorAll("[data-k]").forEach(function (inp) {
+      var k = inp.dataset.k;
+      if (k === "obs") { w.obs = inp.value; return; }
+      if (k === "data") { w.data = inp.value; return; }
+      if (k === "cfeito") { w.cardio.feito = inp.checked; return; }
+      if (k === "cobs") { w.cardio.obs = inp.value; return; }
+      if (k === "cpresc") { w.cardio.presc = inp.value; return; }
+      var e = w.ex[+inp.dataset.e]; if (!e) return;
+      if (k === "feito") { e.feito = inp.checked; return; }
+      var sid = inp.dataset.s, alvo = sid === "aq" ? e.aq : sid === "aj" ? e.aj : sid === "q" ? e.q : e.s[+sid];
+      if (alvo) alvo[k] = inp.value;
+    });
+    return w;
+  }
+
+  // ---------- evolução (só séries de trabalho) ----------
+  function maiorDaSemana(nome, w) {
+    var m = null;
+    treinosDa(w).forEach(function (t) {
+      var d = S.logs[keyOf(w, t)]; if (!d || !d.ex) return;
+      t.exercicios.forEach(function (e, i) {
+        if (e.nome !== nome || !d.ex[i]) return;
+        (d.ex[i].s || []).forEach(function (s) { var x = e.tipo === "tempo" ? s.seg : s.kg; if (typeof x === "number" && (m == null || x > m)) m = x; });
+      });
+    });
+    return m;
+  }
+  function barras(el, titulo, vals, teto, un, vazioMsg) {
+    var ini = PRIMEIRA;
+    var tem = vals.some(function (x) { return x != null && x > 0; });
+    var max = teto || Math.max.apply(null, vals.map(function (x) { return x || 0; })) || 1, h = "<h3>" + esc(titulo) + "</h3>";
+    if (!tem) { el.innerHTML = h + '<p class="vazio">' + esc(vazioMsg) + "</p>"; return; }
+    h += '<div class="plot" style="grid-template-columns:repeat(' + vals.length + ',minmax(0,1fr))">';
+    vals.forEach(function (x, i) {
+      var pct = x ? Math.max(2, Math.round((x / max) * 100)) : 0;
+      h += '<div class="col" title="Semana ' + (ini + i) + ": " + (x == null ? "sem registro" : fmtNum(x) + " " + un) + '"><span class="val">' + (x == null ? "" : fmtNum(x)) + '</span><div class="track">' + (pct ? '<div class="bar" style="height:' + pct + '%"></div>' : "") + '</div><span class="lab">' + (ini + i) + "</span></div>";
+    });
+    el.innerHTML = h + '</div><p class="axis">Semana</p>';
+  }
+  function renderEvolucao() {
+    $("evolucao").hidden = false;
+    var nomes = [], info = {};
+    P.novo.treinos.concat(P.antigo.treinos).forEach(function (t) { t.exercicios.forEach(function (e) { if (nomes.indexOf(e.nome) < 0) { nomes.push(e.nome); info[e.nome] = e; } }); });
+    var sel = $("exSel");
+    if (sel.options.length !== nomes.length) { sel.innerHTML = nomes.map(function (n) { return "<option>" + esc(n) + "</option>"; }).join(""); if (S.exSel && nomes.indexOf(S.exSel) >= 0) sel.value = S.exSel; }
+    S.exSel = sel.value;
+    var cargas = [], feitosSem = [];
+    for (var w = PRIMEIRA; w <= P.semanas; w++) { cargas.push(maiorDaSemana(S.exSel, w)); feitosSem.push(concluidosNaSemana(w)); }
+    var e = info[S.exSel], tempo = e.tipo === "tempo", un = tempo ? "seg" : unidade(e);
+    barras($("chCarga"), tempo ? "Maior tempo da semana (segundos)" : "Maior carga da semana (" + un + ")", cargas, 0, un, "Ainda não há registro salvo para este exercício.");
+    barras($("chTreinos"), "Treinos concluídos por semana (de 5)", feitosSem, 5, "treinos", "Nenhum treino concluído ainda.");
+  }
+  function renderTudo() { renderSemanas(); renderSemana(); renderEvolucao(); }
+
+  // ---------- salvar (fica guardado neste aparelho) ----------
+  var guardaOk = (function () { try { localStorage.setItem("lf-teste", "1"); localStorage.removeItem("lf-teste"); return true; } catch (e) { return false; } })();
+  function gravar() { store.set("lf-registros", S.logs); store.set("lf-progressao", S.prog); }
+  function hojeYMD() { var h = new Date(); return h.getFullYear() + "-" + String(h.getMonth() + 1).padStart(2, "0") + "-" + String(h.getDate()).padStart(2, "0"); }
+  function guardar(card, ajuste) {
+    var key = card.dataset.key, t = treinoById(card.dataset.t, S.week); if (!t) return null;
+    var w = lerCard(card, t), antes = S.logs[key];
+    if (!w.data) w.data = hojeYMD();
+    ajuste(w);
+    var doc = paraDoc(t, w, S.week);
+    if (antes && antes.concluido) doc.concluido = true;
+    S.logs[key] = doc; S.drafts[key] = null; store.del("lf-rascunho:" + key); gravar();
+    S.open[key] = true; refreshCard(key); renderSemanas(); renderEvolucao(); refreshEnvio();
+    return doc;
+  }
+  function salvarExercicio(card, i) {
+    if (!guardar(card, function (w) { if (w.ex[i]) w.ex[i].feito = true; })) return;
+    toast(guardaOk ? "Exercício salvo" : "Anotado. Envie ao Leonardo antes de fechar.");
+  }
+  function salvarTreino(card) {
+    var doc = guardar(card, function () {}); if (!doc) return;
+    doc.concluido = true; gravar(); refreshCard(card.dataset.key); renderSemanas(); renderEvolucao(); refreshEnvio();
+    toast(guardaOk ? "Treino concluído e salvo" : "Treino anotado. Envie ao Leonardo antes de fechar.");
+  }
+  function salvarProg(sec) {
+    var w = S.week, itens = []; sec.querySelectorAll("[data-prog]").forEach(function (c) { if (c.checked) itens.push(P.antigo.progressao[+c.dataset.prog]); });
+    S.prog["s" + w] = { semana: w, itens: itens, salvoEm: new Date().toISOString() }; delete S.progDraft[w]; gravar();
+    var tmp = document.createElement("div"); tmp.innerHTML = progHTML(w); sec.replaceWith(tmp.firstChild); refreshEnvio(); toast("Controle salvo");
+  }
+
+  $("semanas").addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-w]"); if (!b) return;
+    S.week = +b.dataset.w; store.set("lf-semana", S.week); renderSemanas(); renderSemana(); renderPersonal();
+  });
+  $("semana").addEventListener("input", function (ev) {
+    var card = ev.target.closest(".treino");
+    if (card) {
+      var key = card.dataset.key, t = treinoById(card.dataset.t, S.week); if (!t) return;
+      S.drafts[key] = { w: lerCard(card, t) }; store.set("lf-rascunho:" + key, S.drafts[key]);
+      var p = card.querySelector("[data-pill]"); p.dataset.st = "edit"; p.textContent = "Não salvo";
+      return;
+    }
+    var sec = ev.target.closest("#prog");
+    if (sec) {
+      var itens = []; sec.querySelectorAll("[data-prog]").forEach(function (c) { if (c.checked) itens.push(P.antigo.progressao[+c.dataset.prog]); });
+      S.progDraft[S.week] = itens; sec.querySelector("[data-prog-saved]").textContent = "Alterações não salvas";
+    }
+  });
+  $("semana").addEventListener("change", function (ev) { if (ev.target.closest(".treino") || ev.target.closest("#prog")) refreshEnvio(); });
+  $("semana").addEventListener("click", function (ev) {
+    var card = ev.target.closest(".treino");
+    var se = ev.target.closest("[data-salvar-ex]"); if (se && card) return salvarExercicio(card, +se.dataset.salvarEx);
+    if (ev.target.closest("[data-salvar]") && card) return salvarTreino(card);
+    var sp = ev.target.closest("[data-salvar-prog]"); if (sp) return salvarProg(sp.closest("#prog"));
+    var cp = ev.target.closest("[data-copiar]"); if (cp) return copiar(cp);
+  });
+  $("semana").addEventListener("toggle", function (ev) { var c = ev.target; if (c.classList && c.classList.contains("treino")) S.open[c.dataset.key] = c.open; }, true);
+  $("exSel").addEventListener("change", function () { S.exSel = this.value; renderEvolucao(); });
+
+
+  // ---------- modo personal (só aparece para quem pode editar a página) ----------
+  var ART = null;
+  function personalHTML(week) {
+    var h = '<h2>Modo personal</h2><p class="hint">Só quem edita a página vê esta parte. Escreva o cardio de cada treino da semana ' + week + ' e publique. A aluna vê no mesmo link.</p>';
+    treinosDa(week).forEach(function (t) {
+      var atual = (P.cardio && P.cardio[week] && P.cardio[week][t.id]) || "";
+      h += '<label class="c-campo" for="pc-' + t.id + '"><span>' + esc(t.nome + " · " + t.foco) + '</span><input id="pc-' + t.id + '" data-pc="' + t.id + '" autocomplete="off" placeholder="Ex.: bike 15 min, ritmo moderado" value="' + esc(atual) + '"></label>';
+    });
+    h += '<label class="opt" for="pc-seguintes"><input type="checkbox" id="pc-seguintes"><span>Usar o mesmo cardio da semana ' + week + " até a semana " + P.semanas + "</span></label>";
+    return h + '<div class="t-foot"><p class="saved" id="pc-status">Campo vazio tira o cardio daquele treino.</p><button type="button" class="btn" id="pc-publicar">Publicar cardio</button></div>';
+  }
+  function renderPersonal() { var el = $("personal"); if (!ART) { el.hidden = true; el.innerHTML = ""; return; } el.hidden = false; el.innerHTML = personalHTML(S.week); }
+  function documento(novoP) {
+    var cab = document.head.querySelector("style"), reset = cab && cab.textContent.indexOf("safe-area") >= 0 ? cab.textContent : RESET;
+    var json = JSON.stringify(novoP).replace(/</g, "\\u003c");
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' + reset + "</style></head><body>\n" +
+      "<title>" + TITULO + '</title>\n<link rel="stylesheet" href="' + FONTES + '">\n<style id="lf-estilo">' + $("lf-estilo").textContent + '</style>\n<div id="app"></div>\n' +
+      '<script type="application/json" id="lf-dados">' + json + "<\/script>\n<script>" + CODIGO + "<\/script>\n\n</body></html>";
+  }
+  function publicarCardio() {
+    var btn = $("pc-publicar"), st = $("pc-status"), w = S.week, ate = $("pc-seguintes").checked ? P.semanas : w;
+    var novo = JSON.parse(JSON.stringify(P)); novo.cardio = novo.cardio || {};
+    document.querySelectorAll("[data-pc]").forEach(function (inp) {
+      var txt = inp.value.trim();
+      for (var s = w; s <= ate; s++) {
+        var c = novo.cardio[s] = novo.cardio[s] || {};
+        if (txt) c[inp.dataset.pc] = txt; else delete c[inp.dataset.pc];
+        if (!Object.keys(c).length) delete novo.cardio[s];
+      }
+    });
+    if (!CODIGO) { st.textContent = "Não deu para montar a página nova aqui."; return; }
+    btn.disabled = true; btn.textContent = "Publicando…";
+    try { sessionStorage.setItem("lf-semana-personal", String(w)); } catch (e) {}
+    ART.publish(documento(novo)).then(function () { st.textContent = "Publicado. A página vai recarregar."; }, function (e) {
+      var c = e && e.code; btn.disabled = false; btn.textContent = "Publicar cardio";
+      if (c === "conflict") st.textContent = "Havia uma versão mais nova. A página vai recarregar; confira e publique de novo.";
+      else if (c === "not_writer" || c === "not_granted" || c === "not_declared" || c === "consent_required" || c === "capability_disabled") { ART = null; renderPersonal(); toast("Esta conta só pode ver a página."); }
+      else if (c === "rate_limited") st.textContent = "Muitas publicações seguidas. Espere um pouco e tente de novo.";
+      else st.textContent = "Não deu para publicar agora. Tente de novo em instantes.";
+    });
+  }
+  $("personal").addEventListener("click", function (ev) { if (ev.target.closest("#pc-publicar")) publicarCardio(); });
+
+  // ---------- início ----------
+  var objeto = function (x) { return x && typeof x === "object" && !Array.isArray(x) ? x : {}; };
+  S.logs = objeto(store.get("lf-registros")); S.prog = objeto(store.get("lf-progressao"));
+  var vista = +store.get("lf-versao-vista") || 0, m = /^#semana-(\d+)$/.exec(location.hash || "");
+  var sp = null; try { sp = +sessionStorage.getItem("lf-semana-personal") || null; sessionStorage.removeItem("lf-semana-personal"); } catch (e) {}
+  var w0 = sp || (m ? +m[1] : (vista < P.versao ? P.semanaAtual : +store.get("lf-semana") || P.semanaAtual));
+  store.set("lf-versao-vista", P.versao);
+  S.week = w0 >= PRIMEIRA && w0 <= P.semanas ? w0 : PRIMEIRA;
+  $("aluno").textContent = P.aluno;
+  var olho = document.querySelector(".eyebrow"); if (olho) olho.textContent = "Plano de treino · semanas " + PRIMEIRA + " a " + P.semanas;
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+  var ua = navigator.userAgent || "";
+  if (guardaOk && /Instagram|FBAN|FBAV|WhatsApp|Line\//i.test(ua)) aviso("Você abriu o link pelo navegador de dentro de outro app. Para não perder seus registros, abra este link no Chrome ou no Safari e use sempre ele.");
+  if (!guardaOk) aviso("Este navegador não está guardando os registros (pode ser uma aba anônima). Envie a semana ao Leonardo antes de fechar a página.");
+  renderTudo();
+  var cl = window.claude;
+  if (cl && cl.use) Promise.all([cl.use("artifact"), cl.use("user")]).then(function (r) {
+    var art = r[0], u = r[1]; if (!art || !u) return;
+    Promise.all([u.isOwner(), u.canEdit()]).then(function (x) { if (x[0] || x[1]) { ART = art; renderPersonal(); } });
+  }, function () {});
+})();
+</script>
+
+</body></html>
